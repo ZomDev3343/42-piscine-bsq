@@ -6,7 +6,7 @@
 /*   By: truello <thomasdelan2@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:43:40 by truello           #+#    #+#             */
-/*   Updated: 2023/09/11 18:51:18 by truello          ###   ########.fr       */
+/*   Updated: 2023/09/11 19:13:36 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ t_bool	parse_infos(t_char *grid, t_info *info)
 t_short	parse_nb_line(t_char *grid, t_short *buf)
 {
 	unsigned int	i;
-	int	nb_count;
-	t_char	*s_num;
-	t_short	nb_line;
+	int				nb_count;
+	t_char			*s_num;
+	t_short			nb_line;
 
 	i = 0;
 	nb_count = 0;
@@ -50,10 +50,10 @@ t_short	parse_nb_line(t_char *grid, t_short *buf)
 
 t_char	*get_grid(char *file_path)
 {
-	t_char	*grid;
-	int	fd;
+	t_char			*grid;
+	int				fd;
 	unsigned int	len;
-	char	tmp_c;
+	char			tmp_c;
 
 	len = 0;
 	fd = open(file_path, O_RDONLY);
@@ -67,7 +67,7 @@ t_char	*get_grid(char *file_path)
 	fd = open(file_path, O_RDONLY);
 	if (fd == -1)
 		return (0);
-	read(fd, grid, len);	
+	read(fd, grid, len);
 	close(fd);
 	return (grid);
 }

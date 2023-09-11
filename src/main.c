@@ -6,7 +6,7 @@
 /*   By: truello <thomasdelan2@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:41:25 by truello           #+#    #+#             */
-/*   Updated: 2023/09/11 18:50:30 by truello          ###   ########.fr       */
+/*   Updated: 2023/09/11 19:12:33 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <stdio.h>
 
 /* Take the map from the standard input and resolves it */
-t_bool	resolve_map_stdin()
+t_bool	resolve_map_stdin(void)
 {
 	return (TRUE);
 }
@@ -24,10 +24,11 @@ t_bool	resolve_map_stdin()
 /* Resolves the map from every parameters the user gives */
 t_bool	resolve_map(char *map_file)
 {
-	t_char	*grid = get_grid(map_file);
+	t_char	*grid;
 	t_char	*parsed_grid;
-	t_info infos;
+	t_info	infos;
 
+	grid = get_grid(map_file);
 	if (!grid)
 		return (FALSE);
 	if (!parse_infos(grid, &infos))
@@ -35,7 +36,7 @@ t_bool	resolve_map(char *map_file)
 		free(grid);
 		return (FALSE);
 	}
-	print_infos(&infos);	
+	print_infos(&infos);
 	parsed_grid = parse_grid(grid, &infos);
 	free(grid);
 	free(parsed_grid);

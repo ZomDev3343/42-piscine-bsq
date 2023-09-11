@@ -6,7 +6,7 @@
 /*   By: truello <thomasdelan2@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 14:16:41 by truello           #+#    #+#             */
-/*   Updated: 2023/09/11 16:57:22 by truello          ###   ########.fr       */
+/*   Updated: 2023/09/11 19:12:46 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_bool	ft_is_char_num(t_char c)
 {
-	return (c >= 48 && c <= 57);	
+	return (c >= 48 && c <= 57);
 }
 
 t_bool	ft_is_char_alprint(t_char c)
@@ -36,13 +36,13 @@ t_short	ft_short_atoi(t_char *num)
 		num++;
 	}
 	r /= 10;
-	return r;
+	return (r);
 }
 
 t_char	*ft_strndup(t_char *cpy, unsigned int n)
 {
 	unsigned int	i;
-	t_char	*r;
+	t_char			*r;
 
 	i = 0;
 	r = (t_char *) malloc(sizeof(t_char) * (n + 1));
