@@ -6,7 +6,7 @@
 /*   By: truello <thomasdelan2@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:41:25 by truello           #+#    #+#             */
-/*   Updated: 2023/09/11 20:44:05 by truello          ###   ########.fr       */
+/*   Updated: 2023/09/11 20:48:20 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../includes/parser.h"
 #include "../includes/print_helper.h"
 
-#define STDIN_BUFFER_SIZE (long int) 1024
+#define STDIN_BUFFER_SIZE 512
 
 /* Resolves the map from every parameters the user gives */
 t_bool	resolve_map(char *map_file)
@@ -52,7 +52,7 @@ t_bool	resolve_map_stdin(void)
 	buffer[STDIN_BUFFER_SIZE] = 0;
 	while (read(0, buffer + i, 1) > 0 && buffer[i] != '\n')
 		i++;
-	buffer[i - 1] = 0;
+	buffer[i] = 0;
 	ft_putchar('\n', 0);
 	ft_putstr(buffer);
 	ft_putchar('\n', 0);
