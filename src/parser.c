@@ -6,7 +6,7 @@
 /*   By: truello <thomasdelan2@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:43:40 by truello           #+#    #+#             */
-/*   Updated: 2023/09/11 17:38:18 by truello          ###   ########.fr       */
+/*   Updated: 2023/09/11 18:50:51 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_bool	parse_infos(t_char *grid, t_info *info)
 
 t_short	parse_nb_line(t_char *grid, t_short *buf)
 {
-	int	i;
+	unsigned int	i;
 	int	nb_count;
 	t_char	*s_num;
 	t_short	nb_line;
@@ -52,7 +52,7 @@ t_char	*get_grid(char *file_path)
 {
 	t_char	*grid;
 	int	fd;
-	int	len;
+	unsigned int	len;
 	char	tmp_c;
 
 	len = 0;
@@ -72,7 +72,28 @@ t_char	*get_grid(char *file_path)
 	return (grid);
 }
 
-/*t_char	*get_grid_stdin()
+t_char	*parse_grid(t_char *grid, t_info *infos)
 {
-	
-}*/
+	t_char			*parsed;
+	unsigned int	parsed_len;
+	unsigned int	i;
+	unsigned int	j;
+
+	i = 0;
+	j = 0;
+	parsed_len = infos->nb_line * (infos->nb_col);
+	parsed = (t_char *) malloc(sizeof(t_char) * parsed_len + 1);
+	parsed[parsed_len] = 0;
+	while (grid[i] != '\n')
+		i++;
+	while (grid[i])
+	{
+		if (grid[i] != '\n')
+		{
+			parsed[j] = grid[i];
+			j++;
+		}
+		i++;
+	}
+	return (parsed);
+}
