@@ -6,20 +6,15 @@
 /*   By: truello <thomasdelan2@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:41:25 by truello           #+#    #+#             */
-/*   Updated: 2023/09/11 19:12:33 by truello          ###   ########.fr       */
+/*   Updated: 2023/09/11 20:44:05 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/util.h"
 #include "../includes/parser.h"
 #include "../includes/print_helper.h"
-#include <stdio.h>
 
-/* Take the map from the standard input and resolves it */
-t_bool	resolve_map_stdin(void)
-{
-	return (TRUE);
-}
+#define STDIN_BUFFER_SIZE (long int) 1024
 
 /* Resolves the map from every parameters the user gives */
 t_bool	resolve_map(char *map_file)
@@ -43,6 +38,29 @@ t_bool	resolve_map(char *map_file)
 	return (TRUE);
 }
 
+/* Take the map from the standard input and resolves it */
+t_bool	resolve_map_stdin(void)
+{
+	char		*buffer;
+	long int	i;
+
+	i = 0;
+	ft_putstr("Put the path of the map you want to solve : ");
+	buffer = (char *) malloc(STDIN_BUFFER_SIZE + 1);
+	if (!buffer)
+		return (FALSE);
+	buffer[STDIN_BUFFER_SIZE] = 0;
+	while (read(0, buffer + i, 1) > 0 && buffer[i] != '\n')
+		i++;
+	buffer[i - 1] = 0;
+	ft_putchar('\n', 0);
+	ft_putstr(buffer);
+	ft_putchar('\n', 0);
+	resolve_map(buffer);
+	free(buffer);
+	return (TRUE);
+}
+
 int	main(int argc, char **argv)
 {
 	int	i;
@@ -53,4 +71,5 @@ int	main(int argc, char **argv)
 	else
 		while (++i < argc)
 			resolve_map(argv[i]);
+	return (0);
 }
