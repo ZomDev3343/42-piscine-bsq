@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   parser2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: truello <thomasdelan2@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 11:46:29 by truello           #+#    #+#             */
-/*   Updated: 2023/09/11 17:21:17 by truello          ###   ########.fr       */
+/*   Created: 2023/09/11 17:11:55 by truello           #+#    #+#             */
+/*   Updated: 2023/09/11 17:38:28 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_H
-# define PARSER_H
+#include "parser2.h"
 
-# include "util.h"
-# include "parse_util.h"
-# include "parser2.h"
+int	validate_grid(t_char *grid)
+{
+	int	i;
+	int	line_len;
 
-t_bool parse_infos(t_char *grid, t_info *info);
-t_char	*get_grid(char *file_path);
-t_char	*get_grid_stdin();
-t_short	parse_nb_line(t_char *grid, t_short *buf);
-
-#endif
+	line_len = ft_strlen_c(grid, '\n');
+	i = line_len;
+	while (grid[++i])
+	{
+		if (ft_strlen_c(&grid[i], '\n') != line_len)
+			return (0);
+		i += line_len + 1;
+	}
+	return (line_len);
+}

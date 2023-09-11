@@ -6,7 +6,7 @@
 /*   By: truello <thomasdelan2@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:46:38 by truello           #+#    #+#             */
-/*   Updated: 2023/09/11 15:42:40 by truello          ###   ########.fr       */
+/*   Updated: 2023/09/11 17:36:05 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ typedef struct s_info
 	t_char	replace;
 }	t_info;
 
-int		ft_strlen(char *str);
+int		ft_strlen(t_char *str);
+int		ft_strlen_c(t_char *str, char stop_char);
 void	ft_putstr(char *str);
 void	ft_putchar(char c, t_bool newline);
 void	ft_putnbr(int nb);

@@ -6,7 +6,7 @@
 /*   By: truello <thomasdelan2@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:41:25 by truello           #+#    #+#             */
-/*   Updated: 2023/09/11 15:44:00 by truello          ###   ########.fr       */
+/*   Updated: 2023/09/11 17:38:12 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 /* Take the map from the standard input and resolves it */
 t_bool	resolve_map_stdin()
 {
-
 	return (TRUE);
 }
 
@@ -31,8 +30,12 @@ t_bool	resolve_map(char *map_file)
 	if (!grid)
 		return (FALSE);
 	if (!parse_infos(grid, &infos))
+	{
+		free(grid);
 		return (FALSE);
+	}
 	print_infos(&infos);	
+	free(grid);
 	return (TRUE);
 }
 

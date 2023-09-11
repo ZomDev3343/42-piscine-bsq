@@ -6,17 +6,22 @@
 /*   By: truello <thomasdelan2@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:48:38 by truello           #+#    #+#             */
-/*   Updated: 2023/09/11 15:42:29 by truello          ###   ########.fr       */
+/*   Updated: 2023/09/11 17:35:59 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/util.h"
 
-int	ft_strlen(char *str)
+int	ft_strlen(t_char *str)
 {
-	if (!*str)
+	return (ft_strlen_c(str, '\0'));
+}
+
+int	ft_strlen_c(t_char *str, char stop_char)
+{
+	if (*str == stop_char)
 		return (0);
-	return (1 + ft_strlen(str + 1));
+	return (1 + ft_strlen_c(str + 1, stop_char));
 }
 
 void	ft_putstr(char *str)
