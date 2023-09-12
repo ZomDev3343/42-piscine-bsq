@@ -6,7 +6,7 @@
 /*   By: truello <thomasdelan2@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:41:25 by truello           #+#    #+#             */
-/*   Updated: 2023/09/12 16:37:15 by truello          ###   ########.fr       */
+/*   Updated: 2023/09/12 18:11:59 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,9 @@ t_bool	resolve_map_stdin(void)
 	i = 0;
 	infos_str = (t_char *) malloc(18);
 	ft_putstr("Put the path the map you want to solve : \n");
-	while (read(0, infos_str + i, 1) && infos_str[i] != '\n')
+	while (read(0, infos_str + i, 1) && infos_str[i] != '\n' && i < 18)
 		i++;
-	infos_str[i - 2] = '\n';
-	infos_str[i - 1] = 0;
+	infos_str[i + 1] = 0;
 	parse_infos(infos_str, &infos);
 	free(infos_str);
 	buffer = get_grid_from_stdin(&infos);

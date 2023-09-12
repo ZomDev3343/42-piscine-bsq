@@ -6,7 +6,7 @@
 /*   By: truello <thomasdelan2@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:43:40 by truello           #+#    #+#             */
-/*   Updated: 2023/09/12 16:30:36 by truello          ###   ########.fr       */
+/*   Updated: 2023/09/12 18:12:50 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,22 @@
 
 t_bool	parse_infos(t_char *grid, t_info *info)
 {
-	t_short	char_to_skip;
+	int	info_len;
+	t_char	*s_num;
 
-	char_to_skip = parse_nb_line(grid, &(info->nb_line));
-	if (grid[char_to_skip + 4] != '\n')
+	info_len = 0;
+	while (grid[info_len] != '\n' && grid[info_len])
+		info_len++;
+	if (!grid[info_len] || info == 0)
 		return (FALSE);
-	info->char_to_skip = char_to_skip + 5;
-	info->empty = grid[char_to_skip + 1];
-	info->full = grid[char_to_skip + 2];
-	info->replace = grid[char_to_skip + 3];
-	info->nb_col = validate_grid(grid + char_to_skip + 5);
+	s_num = ft_strndup(grid, info_len - 3);
+	parse_nb_line(s_num, &(info->nb_line));
+	free(s_num);
+	info->char_to_skip = info_len + 1;
+	info->empty = grid[info_len - 3];
+	info->full = grid[info_len - 2];
+	info->replace = grid[info_len - 1];
+	info->nb_col = validate_grid(grid + info->char_to_skip);
 	if (!info->nb_col)
 		return (FALSE);
 	return (TRUE);
