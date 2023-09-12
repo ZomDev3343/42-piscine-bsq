@@ -6,7 +6,7 @@
 /*   By: truello <thomasdelan2@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 19:41:26 by truello           #+#    #+#             */
-/*   Updated: 2023/09/12 19:52:03 by truello          ###   ########.fr       */
+/*   Updated: 2023/09/12 19:56:17 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ t_bool	check_lines(t_char *grid, int nb_lines)
 			total++;
 		i++;
 	}
-	return (nb_lines == total);	
+	return (nb_lines == total);
 }

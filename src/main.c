@@ -6,7 +6,7 @@
 /*   By: truello <thomasdelan2@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:41:25 by truello           #+#    #+#             */
-/*   Updated: 2023/09/12 19:54:14 by truello          ###   ########.fr       */
+/*   Updated: 2023/09/12 19:55:57 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ t_bool	resolve_map(char *map_file)
 	while (++i < 4)
 		if (grid[i] == '\n' || grid[i] == '\0')
 			return (FALSE);
-	if (!parse_infos(grid, &infos) 
-			|| unique_info(infos)
-			|| !checkeachcase(infos, grid + infos.char_to_skip)
-			|| !check_lines(grid + infos.char_to_skip, infos.nb_line))
+	if (!parse_infos(grid, &infos)
+		|| unique_info(infos)
+		|| !checkeachcase(infos, grid + infos.char_to_skip)
+		|| !check_lines(grid + infos.char_to_skip, infos.nb_line))
 	{
 		free(grid);
 		return (FALSE);
