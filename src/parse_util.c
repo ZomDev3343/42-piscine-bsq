@@ -6,7 +6,7 @@
 /*   By: truello <thomasdelan2@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 14:16:41 by truello           #+#    #+#             */
-/*   Updated: 2023/09/12 16:29:43 by truello          ###   ########.fr       */
+/*   Updated: 2023/09/12 18:24:02 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,21 @@ t_char	*ft_strndup(t_char *cpy, unsigned int n)
 		i++;
 	}
 	return (r);
+}
+
+t_short	checkeachcase(t_info info, t_char *str)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] != '\n' && str[i] != info.empty
+			&& str[i] != info.full)
+		{
+			return (1);
+		}
+		i++;
+	}
+	return (0);
 }

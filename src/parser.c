@@ -6,7 +6,7 @@
 /*   By: truello <thomasdelan2@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:43:40 by truello           #+#    #+#             */
-/*   Updated: 2023/09/12 18:18:16 by truello          ###   ########.fr       */
+/*   Updated: 2023/09/12 18:32:35 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 t_bool	parse_infos(t_char *grid, t_info *info)
 {
-	int	info_len;
+	int		info_len;
 	t_char	*s_num;
 
 	info_len = 0;
 	while (grid[info_len] != '\n' && grid[info_len])
 		info_len++;
-	if (!grid[info_len] || info == 0)
+	if (info_len < 3)
 		return (FALSE);
 	s_num = ft_strndup(grid, info_len - 3);
 	parse_nb_line(s_num, &(info->nb_line));
