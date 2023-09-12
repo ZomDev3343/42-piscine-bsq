@@ -6,7 +6,7 @@
 /*   By: truello <thomasdelan2@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 14:14:49 by truello           #+#    #+#             */
-/*   Updated: 2023/09/12 18:23:20 by truello          ###   ########.fr       */
+/*   Updated: 2023/09/12 19:31:42 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ t_bool	ft_is_char_num(t_char c);
 t_bool	ft_is_char_alprint(t_char c);
 t_short	ft_short_atoi(t_char *num);
 t_char	*ft_strndup(t_char *cpy, unsigned int n);
-t_short	checkeachcase(t_info info, t_char *str);
+t_bool	checkeachcase(t_info info, t_char *str);
 
 #endif
