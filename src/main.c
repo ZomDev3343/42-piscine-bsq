@@ -6,7 +6,7 @@
 /*   By: truello <thomasdelan2@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:41:25 by truello           #+#    #+#             */
-/*   Updated: 2023/09/12 18:41:06 by truello          ###   ########.fr       */
+/*   Updated: 2023/09/12 18:57:41 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ t_bool	resolve_map(char *map_file)
 		free(grid);
 		return (FALSE);
 	}
-	print_infos(&infos);
+	if (unique_info(infos))
+		return (FALSE);
 	solving(grid + infos.char_to_skip, infos);
 	free(grid);
 	return (TRUE);
@@ -39,11 +40,11 @@ t_bool	resolve_stdin_grid(t_char *grid, t_info *infos)
 	infos->nb_col = validate_grid(grid);
 	if (!infos->nb_col)
 	{
-		ft_putstr("Error : Invalid grid\n");
 		free(grid);
 		return (FALSE);
 	}
-	print_infos(infos);
+	if (unique_info(*infos))
+		return (FALSE);
 	solving(grid + infos->char_to_skip, *infos);
 	free(grid);
 	return (TRUE);
@@ -80,7 +81,7 @@ t_bool	resolve_map_stdin(void)
 
 	i = 0;
 	infos_str = (t_char *) malloc(18);
-	ft_putstr("Put the path the map you want to solve : \n");
+	ft_putstr("Put the map you want to solve : \n");
 	while (read(0, infos_str + i, 1) && infos_str[i] != '\n' && i < 18)
 		i++;
 	infos_str[i + 1] = 0;

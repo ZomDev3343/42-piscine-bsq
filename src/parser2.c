@@ -6,7 +6,7 @@
 /*   By: truello <thomasdelan2@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:11:55 by truello           #+#    #+#             */
-/*   Updated: 2023/09/12 16:31:54 by truello          ###   ########.fr       */
+/*   Updated: 2023/09/12 18:50:38 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,18 @@ int	validate_grid(t_char *grid)
 		i += line_len;
 	}
 	return (line_len);
+}
+
+t_bool	map_error(void)
+{
+	ft_putstr("map error\n");
+	return (FALSE);
+}
+
+t_bool	unique_info(t_info info)
+{
+	if (info.empty == info.full || info.empty == info.replace
+		|| info.replace == info.full)
+		return (TRUE);
+	return (FALSE);
 }
