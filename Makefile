@@ -1,8 +1,9 @@
 SRC=src/
 INC=includes/
+OUTPUT=bsq
 
-all: $(SRC)*.c $(INC)*.h
-	cc -Wall -Wextra -Werror -I $(INC) $(SRC)*.c -o bsq
+all: $(OUTPUT)
+	cc -Wall -Wextra -Werror -I $(INC) $(SRC)*.c -o $(OUTPUT)
 test:
 	cc -I $(INC) $(SRC)*.c -o bsq
 ctest:

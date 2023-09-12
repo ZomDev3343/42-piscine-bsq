@@ -6,7 +6,7 @@
 /*   By: truello <thomasdelan2@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 15:25:06 by truello           #+#    #+#             */
-/*   Updated: 2023/09/11 15:49:05 by truello          ###   ########.fr       */
+/*   Updated: 2023/09/12 14:13:08 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,8 @@ void	print_infos(t_info *infos)
 	ft_putchar(infos->replace, 1);
 	ft_putstr("- Plein : ");
 	ft_putchar(infos->full, 1);
+	ft_putstr("- Char to skip : ");
+	ft_putnbr(infos->char_to_skip);
+	ft_putchar('\n', 0);
 	ft_putstr("------FIN INFOS------\n");
 }
