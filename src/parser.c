@@ -6,7 +6,7 @@
 /*   By: truello <thomasdelan2@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:43:40 by truello           #+#    #+#             */
-/*   Updated: 2023/09/12 14:15:45 by truello          ###   ########.fr       */
+/*   Updated: 2023/09/12 14:18:05 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ t_bool	parse_infos(t_char *grid, t_info *info)
 		return (FALSE);
 	info->char_to_skip = char_to_skip + 5;
 	info->empty = grid[char_to_skip + 1];
-	info->replace = grid[char_to_skip + 2];
-	info->full = grid[char_to_skip + 3];
+	info->full = grid[char_to_skip + 2];
+	info->replace = grid[char_to_skip + 3];
 	info->nb_col = validate_grid(grid + char_to_skip + 5);
 	if (!info->nb_col)
 		return (FALSE);
