@@ -6,7 +6,7 @@
 /*   By: truello <thomasdelan2@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:41:25 by truello           #+#    #+#             */
-/*   Updated: 2023/09/12 19:33:38 by truello          ###   ########.fr       */
+/*   Updated: 2023/09/12 19:37:07 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_bool	resolve_stdin_grid(t_char *grid, t_info *infos)
 		return (FALSE);
 	}
 	if (unique_info(*infos)
-		|| !checkeachcase(*infos, grid + infos->char_to_skip))
+		|| !checkeachcase(*infos, grid))
 		return (FALSE);
 	solving(grid, *infos);
 	free(grid);
