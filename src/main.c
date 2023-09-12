@@ -6,7 +6,7 @@
 /*   By: truello <thomasdelan2@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:41:25 by truello           #+#    #+#             */
-/*   Updated: 2023/09/12 18:58:30 by truello          ###   ########.fr       */
+/*   Updated: 2023/09/12 19:14:00 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_bool	resolve_stdin_grid(t_char *grid, t_info *infos)
 	}
 	if (unique_info(*infos))
 		return (FALSE);
-	solving(grid + infos->char_to_skip, *infos);
+	solving(grid, *infos);
 	free(grid);
 	return (TRUE);
 }
@@ -57,17 +57,21 @@ t_char	*get_grid_from_stdin(t_info *infos)
 	int		i;
 
 	lines_read = -1;
-	i = -1;
+	i = 0;
 	buf = (t_char *) malloc(sizeof(t_char)
 			* (STDIN_BUF_SIZE * infos->nb_line) + 1);
 	if (!buf)
 		return (0);
-	while (++lines_read != infos->nb_line)
+	while (++lines_read < infos->nb_line)
 	{
-		while (read(0, buf + (++i), 1) && buf[i] != '\n')
-			;
+		while (read(0, buf + i, 1) && buf[i] != '\n')
+		{
+			i++;
+		}
+		buf[i] = '\n';
+		i++;
 	}
-	buf[STDIN_BUF_SIZE * lines_read - 1] = 0;
+	buf[i] = 0;
 	return (buf);
 }
 
