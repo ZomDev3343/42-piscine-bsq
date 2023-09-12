@@ -6,7 +6,7 @@
 /*   By: truello <thomasdelan2@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:41:25 by truello           #+#    #+#             */
-/*   Updated: 2023/09/12 19:55:57 by truello          ###   ########.fr       */
+/*   Updated: 2023/09/12 20:09:06 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ t_bool	resolve_map(char *map_file)
 	grid = get_grid(map_file);
 	while (++i < 4)
 		if (grid[i] == '\n' || grid[i] == '\0')
-			return (FALSE);
+			return (map_error());
 	if (!parse_infos(grid, &infos)
 		|| unique_info(infos)
 		|| !checkeachcase(infos, grid + infos.char_to_skip)
 		|| !check_lines(grid + infos.char_to_skip, infos.nb_line))
 	{
 		free(grid);
-		return (FALSE);
+		return (map_error());
 	}
 	solving(grid + infos.char_to_skip, infos);
 	free(grid);
@@ -48,7 +48,7 @@ t_bool	resolve_stdin_grid(t_char *grid, t_info *infos)
 		|| !check_lines(grid, infos->nb_line))
 	{
 		free(grid);
-		return (FALSE);
+		return (map_error());
 	}
 	solving(grid, *infos);
 	free(grid);
@@ -90,20 +90,19 @@ t_bool	resolve_map_stdin(void)
 
 	i = 0;
 	infos_str = (t_char *) malloc(18);
-	ft_putstr("Put the map you want to solve : \n");
 	while (read(0, infos_str + i, 1) && infos_str[i] != '\n' && i < 18)
 		i++;
 	infos_str[i + 1] = 0;
 	if (infos_str[0] == '0' || ft_strlen(infos_str) < 5)
 	{
 		free(infos_str);
-		return (FALSE);
+		return (map_error());
 	}
 	parse_infos(infos_str, &infos);
 	free(infos_str);
 	buffer = get_grid_from_stdin(&infos);
 	if (!buffer)
-		return (FALSE);
+		return (map_error());
 	resolve_stdin_grid(buffer, &infos);
 	return (TRUE);
 }
