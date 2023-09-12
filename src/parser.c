@@ -6,7 +6,7 @@
 /*   By: truello <thomasdelan2@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:43:40 by truello           #+#    #+#             */
-/*   Updated: 2023/09/12 14:18:05 by truello          ###   ########.fr       */
+/*   Updated: 2023/09/12 14:54:59 by jedurand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,21 +54,26 @@ t_char	*get_grid(char *file_path)
 	t_char			*grid;
 	int				fd;
 	unsigned int	len;
-	char			tmp_c;
+	unsigned int	total_len;
+	char		buffer[65536];
 
-	len = 0;
+	len = 1;
+	total_len = 0;
 	fd = open(file_path, O_RDONLY);
 	if (fd == -1)
 		return (0);
-	while (read(fd, &tmp_c, 1))
-		len++;
+	while (len)
+	{
+		len = read(fd, buffer, 65536);
+		total_len += len;
+	}
 	close(fd);
-	grid = (t_char *) malloc(sizeof(t_char) * (len + 1));
-	grid[len] = 0;
+	grid = (t_char *) malloc(sizeof(t_char) * (total_len + 1));
+	grid[total_len] = 0;
 	fd = open(file_path, O_RDONLY);
 	if (fd == -1)
 		return (0);
-	read(fd, grid, len);
+	read(fd, grid, total_len);
 	close(fd);
 	return (grid);
 }

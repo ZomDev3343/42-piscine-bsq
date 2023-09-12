@@ -2,7 +2,7 @@ SRC=src/
 INC=includes/
 OUTPUT=bsq
 
-all: $(OUTPUT)
+all: 
 	cc -Wall -Wextra -Werror -I $(INC) $(SRC)*.c -o $(OUTPUT)
 test:
 	cc -I $(INC) $(SRC)*.c -o bsq
