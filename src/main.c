@@ -6,7 +6,7 @@
 /*   By: truello <thomasdelan2@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:41:25 by truello           #+#    #+#             */
-/*   Updated: 2023/09/12 19:14:00 by truello          ###   ########.fr       */
+/*   Updated: 2023/09/12 19:22:13 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,13 @@ t_bool	resolve_map(char *map_file)
 {
 	t_char	*grid;
 	t_info	infos;
+	int		i;
 
+	i = -1;
 	grid = get_grid(map_file);
+	while (++i < 4)
+		if (grid[i] == '\n' || grid[i] == '\0')
+			return (FALSE);
 	if (!grid)
 		return (FALSE);
 	if (!parse_infos(grid, &infos))
