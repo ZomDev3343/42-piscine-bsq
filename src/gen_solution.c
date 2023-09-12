@@ -6,7 +6,7 @@
 /*   By: jedurand <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 20:22:05 by jedurand          #+#    #+#             */
-/*   Updated: 2023/09/12 14:15:52 by truello          ###   ########.fr       */
+/*   Updated: 2023/09/12 15:36:08 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,28 +98,3 @@ void	solving(t_char *input, t_info info)
 	print_2d_array(input, info);
 	free(result);
 }
-
-/*int	main(void)
-{
-	t_info info;
-	info.nb_line = 20;
-	info.nb_col = 20;
-	info.empty = '.';
-	info.full = 'o';
-	info.replace = 'X';
-	t_char input[] = "....................\n...........o.......o\n.o..................\n.........o..o..o....\n....o...............\n.........o..........\n................o...\n.o.......o........o.\n....oo........o.....\n..........o.........\n....................\n....................\n.......o............\no..................o\n...o...............o\n....................\n..........o.........\n...............oo...\n..........o.........\n....................\n";
-
-	solving(input, info);}*/
-	//unsigned short	*result;
-	//result = solving(input, info);
-	// Print the result array
-	/*int i;
-	i = 0;
-	while (i < ((info.nb_line + 1) * (info.nb_col + 1))) {
-	    printf("%d", result[i]);
-	    if ((i + 1) % (info.nb_col + 1) == 0) {
-		printf("\n");
-	    }
-	    i++;
-	}
-	return (0);}*/

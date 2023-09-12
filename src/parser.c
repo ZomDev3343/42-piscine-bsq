@@ -6,7 +6,7 @@
 /*   By: truello <thomasdelan2@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:43:40 by truello           #+#    #+#             */
-/*   Updated: 2023/09/12 14:54:59 by jedurand         ###   ########.fr       */
+/*   Updated: 2023/09/12 16:30:36 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_char	*get_grid(char *file_path)
 	int				fd;
 	unsigned int	len;
 	unsigned int	total_len;
-	char		buffer[65536];
+	char			buffer[65536];
 
 	len = 1;
 	total_len = 0;

@@ -6,7 +6,7 @@
 /*   By: truello <thomasdelan2@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:46:29 by truello           #+#    #+#             */
-/*   Updated: 2023/09/12 14:04:28 by truello          ###   ########.fr       */
+/*   Updated: 2023/09/12 15:59:23 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "util.h"
 # include "parse_util.h"
 # include "parser2.h"
+
+# define STDIN_BUF_SIZE 1024
 
 t_bool	parse_infos(t_char *grid, t_info *info);
 t_char	*get_grid(char *file_path);

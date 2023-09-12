@@ -6,15 +6,13 @@
 /*   By: truello <thomasdelan2@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:41:25 by truello           #+#    #+#             */
-/*   Updated: 2023/09/12 14:08:00 by truello          ###   ########.fr       */
+/*   Updated: 2023/09/12 16:37:15 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/util.h"
 #include "../includes/parser.h"
 #include "../includes/print_helper.h"
-
-#define STDIN_BUFFER_SIZE 512
 
 /* Resolves the map from every parameters the user gives */
 t_bool	resolve_map(char *map_file)
@@ -36,26 +34,63 @@ t_bool	resolve_map(char *map_file)
 	return (TRUE);
 }
 
+t_bool	resolve_stdin_grid(t_char *grid, t_info *infos)
+{
+	infos->nb_col = validate_grid(grid);
+	if (!infos->nb_col)
+	{
+		ft_putstr("Error : Invalid grid\n");
+		free(grid);
+		return (FALSE);
+	}
+	print_infos(infos);
+	solving(grid + infos->char_to_skip, *infos);
+	free(grid);
+	return (TRUE);
+}
+
+t_char	*get_grid_from_stdin(t_info *infos)
+{
+	t_char	*buf;
+	int		lines_read;
+	int		i;
+
+	lines_read = -1;
+	i = -1;
+	buf = (t_char *) malloc(sizeof(t_char)
+			* (STDIN_BUF_SIZE * infos->nb_line) + 1);
+	if (!buf)
+		return (0);
+	while (++lines_read != infos->nb_line)
+	{
+		while (read(0, buf + (++i), 1) && buf[i] != '\n')
+			;
+	}
+	buf[STDIN_BUF_SIZE * lines_read - 1] = 0;
+	return (buf);
+}
+
 /* Take the map from the standard input and resolves it */
 t_bool	resolve_map_stdin(void)
 {
-	char		*buffer;
+	t_char		*buffer;
+	t_char		*infos_str;
 	long int	i;
+	t_info		infos;
 
 	i = 0;
-	ft_putstr("Put the path of the map you want to solve : ");
-	buffer = (char *) malloc(STDIN_BUFFER_SIZE + 1);
+	infos_str = (t_char *) malloc(18);
+	ft_putstr("Put the path the map you want to solve : \n");
+	while (read(0, infos_str + i, 1) && infos_str[i] != '\n')
+		i++;
+	infos_str[i - 2] = '\n';
+	infos_str[i - 1] = 0;
+	parse_infos(infos_str, &infos);
+	free(infos_str);
+	buffer = get_grid_from_stdin(&infos);
 	if (!buffer)
 		return (FALSE);
-	buffer[STDIN_BUFFER_SIZE] = 0;
-	while (read(0, buffer + i, 1) > 0 && buffer[i] != '\n')
-		i++;
-	buffer[i] = 0;
-	ft_putchar('\n', 0);
-	ft_putstr(buffer);
-	ft_putchar('\n', 0);
-	resolve_map(buffer);
-	free(buffer);
+	resolve_stdin_grid(buffer, &infos);
 	return (TRUE);
 }
 
