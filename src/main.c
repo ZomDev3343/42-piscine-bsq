@@ -6,7 +6,7 @@
 /*   By: truello <thomasdelan2@gmail.com>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:41:25 by truello           #+#    #+#             */
-/*   Updated: 2023/09/12 18:28:40 by truello          ###   ########.fr       */
+/*   Updated: 2023/09/12 18:41:06 by truello          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ t_bool	resolve_map_stdin(void)
 	while (read(0, infos_str + i, 1) && infos_str[i] != '\n' && i < 18)
 		i++;
 	infos_str[i + 1] = 0;
-	if (infos_str[0] == '0')
+	if (infos_str[0] == '0' || ft_strlen(infos_str) < 5)
 	{
 		free(infos_str);
 		return (FALSE);
